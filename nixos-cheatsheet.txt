@@ -1,0 +1,28 @@
+I write what I learn here about nix os
+
+nixos config file location:
+/etc/nixos/configuration.nix
+
+rebuilding what I change inside nixos config:
+sudo nixos-rebuild switch
+with this I can switch with next boot: (usefull for system upgrades)
+sudo nixos-rebuild boot
+
+clean other generations in nixos:
+sudo nix-collect-grabage
+and then a rebuild switch
+adding -d option will keep my current version and delete all others
+--delete-older-than nd (means number of days) will delete generation older that that number
+
+an system update script is a good idea:
+sudo nix-collect-garbage --delete-older-than 30d or 7d (low storage)
+sudo nixos-rebuild boot --upgrade
+(any other thing I may need to upgrade)
+
+rollback to previous generation:
+nixos-rebuild switch --rollback
+
+show nixos options:
+nixos-option <option>
+also in:
+https://search.nixos.org/options
