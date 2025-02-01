@@ -11,7 +11,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "pios";
 
   networking.networkmanager.enable = true;
 
@@ -63,7 +63,7 @@ in
   };
 
   services.printing.enable = true;
-
+ 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -89,7 +89,7 @@ in
   '';
 
   environment.systemPackages = with pkgs; [
-  emacs
+  emacs29-pgtk
   neovim
   wget
   curl
@@ -106,8 +106,9 @@ in
   nmap
   file
   tldr
-  btop
+  lsof
   fastfetch
+  nixfmt-rfc-style
 
   nekoray
   brave
@@ -123,18 +124,20 @@ in
   adwaita-qt6
   feh
   btop
-  retroarch
   mpv
   gnome.dconf-editor
   gnome-extension-manager
   unstable.glamoroustoolkit
+  vscode-fhs
   ];
   
+  # programs.steam.enable = true;
+
   fonts.packages = with pkgs; [
   cantarell-fonts
   meslo-lgs-nf
   jetbrains-mono
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
